@@ -1,0 +1,17 @@
+
+# Install Docker Engine on EC2 Instance
+sudo yum install docker -y
+sudo service docker start
+
+# Build Docker Image
+sudo docker build -t customimage .
+sudo docker images --filter reference=customimage
+
+# Run Container from Image
+sudo docker run -t -id -p 80:80 customimage
+
+# Upload Container to Dockerhub (optional)
+sudo docker login --username=YOUR_USER
+sudo docker images
+sudo docker tag IMAGEID YOUR_USER/customimage
+sudo docker push YOUR_USER/customimage:latest

@@ -1,0 +1,16 @@
+- name: Install Softwares
+  hosts: localhost
+  vars: 
+    packages:
+      - name: httpd
+        required: True
+      - name: wget
+        required: False
+  tasks:
+  - name: Install "{{ item.name }}" on AmazonLinux
+    yum: 
+      name: "{{ item.name }}"
+      state: present
+    
+    when: item.required == True
+    loop: "{{ packages }}"

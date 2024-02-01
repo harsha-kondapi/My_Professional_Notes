@@ -1,0 +1,17 @@
+-
+  name: Install NGINX
+  hosts: all
+  tasks:
+    - name: nginx on ubuntu
+      apt:
+        name: nginx
+        state: present
+      when: ansible_os_family == "Ubuntu"
+
+    - name: nginx on amazonlinux
+      yum:
+        name: nginx
+        state: present
+      when: ansible_os_family == "Amazon"
+
+    

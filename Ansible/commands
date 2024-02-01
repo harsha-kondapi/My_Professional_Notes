@@ -1,0 +1,35 @@
+# set ansible path
+vim ~/.bashrc
+
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+source ~/.bashrc
+
+# hosts file
+
+mkdir -p /etc/ansible/
+vim /etc/ansible/hosts
+
+# add ips to hosts file
+
+ansible all --list-hosts
+
+ansible all -m ping
+
+sudo amazon-linux-extras install epel
+sudo yum-config-manager --enable epel
+sudo yum install sshpass
+
+ansible all -m ping
+
+vim /etc/ansible/ansible.cfg
+[defaults]
+host_key_checking = false
+
+ansible-inventory -i hosts --list
+
+# playbook
+
+ansible-playbook playbook.yml
