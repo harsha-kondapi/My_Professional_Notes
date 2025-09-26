@@ -1,0 +1,3 @@
+# AWS Account Info
+# Environment: dev
+# Account Type: NonProd AWS Account

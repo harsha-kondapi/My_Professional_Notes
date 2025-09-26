@@ -1,0 +1,3 @@
+# AWS Account Info
+# Environment: uat
+# Account Type: NonProd AWS Account

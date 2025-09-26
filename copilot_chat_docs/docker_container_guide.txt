@@ -1,0 +1,67 @@
+Running Docker Containers Forever
+
+To ensure Docker containers run continuously or restart automatically after exiting, follow these strategies:
+
+1. Use Docker Restart Policies
+
+Docker provides built-in restart policies to control container behavior after it stops or crashes.
+
+Command:
+    docker run -d --restart unless-stopped your-image-name
+
+Restart Policy Options:
+    - no: Do not restart the container (default).
+    - on-failure: Restart only if the container exits with a non-zero status.
+    - always: Always restart the container if it stops.
+    - unless-stopped: Restart always unless explicitly stopped by the user.
+
+2. Using Docker Compose
+
+Docker Compose allows you to define restart policies in a YAML configuration file.
+
+Example docker-compose.yml:
+    version: '3'
+    services:
+      my-service:
+        image: your-image-name
+        restart: unless-stopped
+
+Command to run:
+    docker-compose up -d
+
+Handling Exited Containers
+
+If a container has already exited, you can make it run continuously by applying the following steps:
+
+1. Restart and Apply Restart Policy
+
+Commands:
+    docker start <container_name_or_id>
+    docker update --restart unless-stopped <container_name_or_id>
+
+This ensures the container restarts automatically unless manually stopped.
+
+2. Recreate with Restart Policy
+
+If the container was created without a restart policy, remove and recreate it:
+
+    docker rm <container_name_or_id>
+    docker run -d --restart unless-stopped your-image-name
+
+3. Check Why the Container Exited
+
+Use logs to diagnose the issue:
+
+    docker logs <container_name_or_id>
+
+Common reasons:
+    - The main process inside the container finished or crashed.
+    - Configuration errors or missing dependencies.
+
+Pro Tip
+
+Use long-running processes inside containers (e.g., web servers) or keep them alive with commands like:
+
+    tail -f /dev/null
+
+Note: This is a workaround and not recommended for production.

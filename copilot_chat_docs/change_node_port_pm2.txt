@@ -1,0 +1,32 @@
+How to Change the Port Number of a Node.js App Running with PM2
+
+Step 1: Update the Port in Your Node.js App
+-------------------------------------------
+1. Open your app’s main file (e.g., app.js).
+2. Locate the line where the server is started, typically:
+   app.listen(5000, () => {
+     console.log("Server running on port 5000");
+   });
+3. Change the port number to your desired value, e.g., 3000:
+   app.listen(3000, () => {
+     console.log("Server running on port 3000");
+   });
+4. Save the file.
+
+Step 2: Restart the App with PM2
+--------------------------------
+1. Restart the app using:
+   pm2 restart app
+   (Replace 'app' with the actual name or ID of your process. Use 'pm2 list' to find it.)
+
+Step 3: (Optional) Clear Old Logs
+---------------------------------
+1. To clear previous logs and avoid confusion:
+   pm2 flush
+
+Step 4: Verify the Change
+-------------------------
+1. Check if the app is running on the new port:
+   curl http://localhost:3000
+2. Or access it via your browser or EC2 public IP.
+

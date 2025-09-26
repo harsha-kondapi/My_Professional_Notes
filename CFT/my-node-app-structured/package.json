@@ -1,0 +1,13 @@
+{
+  "name": "my-node-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "echo 'No build step needed'",
+    "test": "echo 'Running tests...'"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

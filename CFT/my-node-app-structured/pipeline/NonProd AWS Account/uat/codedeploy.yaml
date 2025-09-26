@@ -1,0 +1,4 @@
+# codedeploy.yaml for uat environment
+# AWS Account Info
+# Environment: uat
+# Account Type: NonProd AWS Account

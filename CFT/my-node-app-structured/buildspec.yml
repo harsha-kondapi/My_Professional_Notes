@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - npm install
+  build:
+    commands:
+      - echo "Build started on $(date)"
+      - npm run build || echo "No build step defined"
+  post_build:
+    commands:
+      - echo "Build completed on $(date)"
+      - zip -r app.zip . -x node_modules/*
+artifacts:
+  files:
+    - app.zip

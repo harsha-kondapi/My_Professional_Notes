@@ -1,0 +1,3 @@
+# AWS Account Info
+# Environment: ppe
+# Account Type: NonProd AWS Account

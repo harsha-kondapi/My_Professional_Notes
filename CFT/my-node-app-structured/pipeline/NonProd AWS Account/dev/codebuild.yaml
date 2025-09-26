@@ -1,0 +1,4 @@
+# codebuild.yaml for dev environment
+# AWS Account Info
+# Environment: dev
+# Account Type: NonProd AWS Account
